@@ -248,8 +248,28 @@
   
   <script>
     function navigate() {
-      window.open("https://hook.eu1.make.com/lim28zpruymh5q8dzoarofs66od7v8t2?timestamp=timestamp", '_blank').focus();
-    }
+    const url = 'https://hook.eu1.make.com/lim28zpruymh5q8dzoarofs66od7v8t2'; // Replace with your actual webhook URL
+    const timestamp = new Date().toISOString(); // Capture the current timestamp
+
+    fetch(url, {
+      method: 'POST', // Adjust method as per your service's requirement (POST is common)
+      headers: {
+        'Content-Type': 'application/json' // Set content type if sending data
+      },
+      body: JSON.stringify({ // Optional: Send data in the payload, including timestamp
+        timestamp: timestamp,
+        // Other data you want to send (if applicable)
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        console.error('Error sending webhook:', response.statusText);
+      } else {
+        console.log('Webhook sent successfully!');
+      }
+    })
+    .catch(error => console.error('Error sending webhook:', error));
+  }
   </script>
 
 </body>
