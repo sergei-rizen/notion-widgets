@@ -248,6 +248,10 @@
   <script>
     function navigate() {
     const url = 'https://hook.eu1.make.com/lim28zpruymh5q8dzoarofs66od7v8t2'; // Replace with your actual webhook URL
+
+    // Open the URL in a new window
+    window.open(url, '_blank');
+
     const timestamp = new Date().toISOString(); // Capture the current timestamp
 
     fetch(url, {
